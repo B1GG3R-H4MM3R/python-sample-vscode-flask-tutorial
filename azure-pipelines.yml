@@ -14,6 +14,9 @@ strategy:
       python.version: '3.12'
 
 steps:
+  # add task(s) for install of required python packages
+  # - task:
+  
   - task: UsePythonVersion@0
     inputs:
       versionSpec: '$(python.version)'
