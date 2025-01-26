@@ -2,8 +2,9 @@ trigger:
 - main
 
 pool:
-  #vmImage: ubuntu-latest
-  name: Default
+  vmImage: ubuntu-latest
+  name: Azure Pipelines
+  # name: Default
 strategy:
   matrix:
     Python310:
@@ -20,7 +21,7 @@ steps:
   - task: UsePythonVersion@0
     inputs:
       versionSpec: '$(python.version)'
-      disableDownloadFromRegistry: true
+      # disableDownloadFromRegistry: true
     displayName: 'Use Python $(python.version)'
   
   - script: |
