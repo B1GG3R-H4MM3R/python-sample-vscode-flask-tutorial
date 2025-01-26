@@ -38,8 +38,8 @@ jobs:
       pip install -r requirements.txt
     displayName: 'Install dependencies'
 
-  - task: ArchiveFiles@2
-    displayName: 'Archive files'
+  - displayName: 'Archive files'
+    task: ArchiveFiles@2
     inputs:
       rootFolderOrFile: $(System.DefaultWorkingDirectory)
       includeRootFolder: false
@@ -53,7 +53,7 @@ jobs:
       ArtifactName: 'drop'
       publishLocation: 'Container'
 
-  - script: |
+  - displayName: 'pytest'
+    script: |
       pip install pytest pytest-azurepipelines
       python -m pytest
-    displayName: 'pytest'
