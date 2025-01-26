@@ -1,13 +1,13 @@
 resources:
   containers:
   - container: u16
-    image: python:3.10
+    image: python:3.10.16-slim
 
   - container: u18
-    image: python:3.11
+    image: python:3.11.11-slim
 
   - container: u20
-    image: python:3.12
+    image: python:3.12.8-slim
 
 jobs:
 - job: RunInContainer
