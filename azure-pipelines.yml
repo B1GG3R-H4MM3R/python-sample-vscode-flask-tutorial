@@ -43,7 +43,7 @@ jobs:
     inputs:
       rootFolderOrFile: $(System.DefaultWorkingDirectory)
       includeRootFolder: false
-      archiveType: zip
+      archiveType: tar
       archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-$(python.version).zip
       replaceExistingArchive: true
 
