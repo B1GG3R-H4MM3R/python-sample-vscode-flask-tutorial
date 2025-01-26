@@ -28,7 +28,7 @@ jobs:
         containerResource: u20
         python.version: '3.12'
 
-  container: $[ variables['containerResource, python.version'] ]
+  container: $[ variables['containerResource'] ]
 
   steps:
   - script: printenv
