@@ -1,29 +1,38 @@
-trigger:
-- main
+resources:
+  containers:
+  - container: u16
+    image: python:3.10
 
-pool:
-  vmImage: ubuntu-latest
-  name: Azure Pipelines
-  # name: Default
-strategy:
-  matrix:
-    Python310:
-      python.version: '3.10'
-    Python311:
-      python.version: '3.11'
-    Python312:
-      python.version: '3.12'
+  - container: u18
+    image: python:3.11
 
-steps:
-  # add task(s) for install of required python packages
-  # - task:
-  
-  - task: UsePythonVersion@0
-    inputs:
-      versionSpec: '$(python.version)'
-      # disableDownloadFromRegistry: true
-    displayName: 'Use Python $(python.version)'
-  
+  - container: u20
+    image: python:3.12
+
+jobs:
+- job: RunInContainer
+  pool:
+    name: Azure Pipelines
+    # name: Default
+    vmImage: 'ubuntu-latest'
+
+  strategy:
+    matrix:
+      Python310:
+        containerResource: u16
+        python.version: '3.10'
+      Python311:
+        containerResource: u18
+        python.version: '3.11'
+      Python312:
+        containerResource: u20
+        python.version: '3.12'
+
+  container: $[ variables['containerResource, python.version'] ]
+
+  steps:
+  - script: printenv
+    
   - script: |
       python -m pip install --upgrade pip
       pip install -r requirements.txt
