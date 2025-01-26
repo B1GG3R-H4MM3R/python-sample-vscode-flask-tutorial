@@ -32,6 +32,7 @@ jobs:
 
   steps:
   - script: printenv
+    displayName: Print Env Vars
     
   - script: |
       python -m pip install --upgrade pip
